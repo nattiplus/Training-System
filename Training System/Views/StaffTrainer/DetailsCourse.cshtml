@@ -1,0 +1,101 @@
+﻿@model Training_System.Models.Course
+
+@{
+    ViewBag.Title = "Details Course";
+}
+
+<div class="container">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Course</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Descriptions)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Descriptions)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Requirements)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Requirements)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Image)
+            </dt>
+
+            <dd>
+                @*@Html.DisplayFor(model => model.Image)*@
+                <img src="@Url.Content(Model.Image)" width="400" height="300" />
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Publisher)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Publisher)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.About)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.About)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.TotalTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.TotalTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Create_Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Create_Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Update_Date)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Update_Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.Name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "EditCourse", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "manageCourse")
+    </p>
+</div>

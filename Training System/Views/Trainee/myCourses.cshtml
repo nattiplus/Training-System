@@ -1,0 +1,45 @@
+﻿@model IEnumerable<Training_System.Models.Enrollment>
+
+@{
+    ViewBag.Title = "My Courses";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="page-header"><h2>My Courses</h2></div>
+        <table class="table table-bordered table-hover">
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    if (item.Status == true)
+                    {
+                        <tr>
+                            <td><img src="@Url.Content(item.Course.Image)" alt="Picture Not Found" /></td>
+                            <td>
+                                <h4><b>@item.Course.Name</b></h4>
+                                <p>@item.Course.Descriptions</p>
+                                @foreach (var itemTrainer in ViewBag.OfficeTrainer)
+                                {
+                                    <p>Instructor for this course: <b>@itemTrainer.Trainer.FullName</b></p>
+                                }
+                            </td>
+                            <td>
+                                <a href="/Course/Index/@item.Course.Id" class="btn btn-success">View Course</a> <br /><br />
+                                <a href="/Trainee/ScoreResult/@item.Course.Id?Trainee_Id=@item.TraineeId" class="btn btn-info">Score</a>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr>
+                            <td>
+                                <p>Your account has not been enrollment courses</p>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

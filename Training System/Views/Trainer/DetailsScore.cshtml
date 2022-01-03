@@ -1,0 +1,84 @@
+﻿@model Training_System.Models.Score
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="container">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Score</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Mark_Date)*@
+                Mark Date
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Mark_Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.ToTal)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.ToTal)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @*@Html.DisplayFor(model => model.Status)*@
+                @if (Model.Status == true)
+                {
+                    <button class="btn btn-success">Passed</button>
+                }
+                else if (Model.Status == false)
+                {
+                    <button class="btn btn-danger">Failed</button>
+                }
+                else
+                {
+                    <button class="btn btn-default">Not Assign Yet</button>
+                }
+            </dd>
+
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Update_Date)*@
+                Update Date
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Update_Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Course.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Course.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Trainee.FullName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Trainee.FullName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @*@Html.ActionLink("Assign", "AssignScore", new { id = Model.Id })*@
+        <a href="/Trainer/EditScore?Trainee_Id=@ViewBag.Trainee_Id&Course_Id=@ViewBag.Course_Id" style="margin-right: 10px;">Edit Score</a>
+        @*@Html.ActionLink("Back to List", "Index")*@
+        <a href="/Trainer/MarkStudents/@ViewBag.Course_Id">Back to List</a>
+    </p>
+</div>

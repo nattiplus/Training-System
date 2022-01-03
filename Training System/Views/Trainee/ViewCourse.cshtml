@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "ViewCourse";
+}
+
+<div class="container">
+    <h1 class="page-header text-center">Course Details</h1>
+    <div class="row">
+        <div class="col-md-9">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">Overview</a></li>
+                <li role="presentation"><a href="#requirements" aria-controls="requirements" role="tab" data-toggle="tab">Requirements</a></li>
+                <li role="presentation"><a href="#about-this-course" aria-controls="about-this-course" role="tab" data-toggle="tab">About This Course</a></li>
+            </ul>
+
+            <!-- Content Show -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active control-panel-body" id="overview">
+                            <img src="~/Content/img/nodejs_overview.png" />
+                            <hr />
+                            <p>This Course helps you learning A - Z NodeJS</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="requirements">
+                            <p>Programming language:</p>
+                            <p>Devices:</p>
+                            <p>Videos: 56</p>
+                            <p>Total: 100 hours</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="about-this-course">...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Menu Of Course Detail -->
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">Course Title... </h4>
+                </div>
+                <div class="panel-body control-panel-body">
+                    <img src="~/Content/img/Nodejs_logo_light.png" />
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <button type="button" class="btn btn-success btn-lg btn-block">Enroll Now</button>
+                    <button type="button" class="btn btn-info btn-lg btn-block">Watch Trailer</button>
+                    <hr />
+                    <h5>Category:</h5>
+                    <h5>Publish Day: </h5>
+                    <h5>Publisher: </h5>
+                    <h5>Trainer:</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

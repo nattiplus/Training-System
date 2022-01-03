@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Training_System.Models.Enrollment>
+
+@{
+    ViewBag.Title = "MarkStudents";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="page-header"><h2>Mark Students - @item.Course.Name</h2></div>
+
+            <a href="/Trainer/AssignScore?Trainee_Id=@item.Trainee.Id&Course_Id=@item.CourseId" class="btn btn-success" style="margin-bottom:10px;"><i class="fa fa-plus"></i> Assign Score</a>
+        }
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th>Enrollment Date</th>
+                    <th>Course</th>
+                    <th>Trainee</th>
+                    <th>Enrollment Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Enroll_Date)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Course.Name)</td>
+                        <td>@Html.DisplayFor(modelItem => item.Trainee.FullName)</td>
+                        <td>
+                            @if (item.Status == true)
+                            {
+                                <button class="btn btn-success" disabled="disabled">Activated</button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-danger" disabled="disabled">Not Activated</button>
+                            }
+                        <td>
+                            <a href="/Trainer/EditScore?Trainee_Id=@item.Trainee.Id&Course_Id=@item.CourseId" class="btn btn-primary"><i class="glyphicon glyphicon-pencil"></i></a>
+                            <a href="/Trainer/DetailsScore?Trainee_Id=@item.Trainee.Id&Course_Id=@item.CourseId" class="btn btn-warning"><i class="glyphicon glyphicon-eye-open"></i></a>
+                            @foreach (var itemscore in ViewBag.ScoreId)
+                            {
+                                <a href="/Trainer/DeleteScore/@itemscore.Id" class="btn btn-danger"><i class="glyphicon glyphicon-trash"></i></a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

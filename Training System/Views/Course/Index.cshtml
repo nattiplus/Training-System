@@ -1,0 +1,73 @@
+﻿@model Training_System.Models.Course
+
+@{
+    ViewBag.Title = "View Course";
+}
+
+<div class="container">
+    <h1 class="page-header text-center">Course Details</h1>
+    <div class="row">
+        <div class="col-md-9">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#overview" aria-controls="overview" role="tab" data-toggle="tab">Overview</a></li>
+                <li role="presentation"><a href="#requirements" aria-controls="requirements" role="tab" data-toggle="tab">Requirements</a></li>
+                <li role="presentation"><a href="#about-this-course" aria-controls="about-this-course" role="tab" data-toggle="tab">About This Course</a></li>
+            </ul>
+
+            <!-- Content Show -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active control-panel-body" id="overview">
+                            <img src="@Url.Content(Model.Image)" />
+                            <hr />
+                            <p>@Html.DisplayFor(model => model.Descriptions)</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="requirements">
+                            <p>@Html.DisplayFor(model => model.Requirements)</p>
+                            <p>@Html.DisplayFor(model => model.TotalTime)</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="about-this-course">@Html.DisplayFor(model => model.About)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Menu Of Course Detail -->
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h4 class="panel-title">@Html.DisplayFor(model => model.Name)</h4>
+                </div>
+                <div class="panel-body control-panel-body">
+                    <img src="~/Content/img/Nodejs_logo_light.png" />
+                </div>
+            </div>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    @if (User.IsInRole("Trainee"))
+                    {
+                        <button type="button" class="btn btn-success btn-lg btn-block">Enroll Now</button>
+                        <button type="button" class="btn btn-info btn-lg btn-block">Watch Trailer</button>
+                    }
+                    @if (User.IsInRole("Trainer"))
+                    {
+                        <button type="button" class="btn btn-success btn-lg btn-block">Teaching Now</button>
+                        <h4>Total <strong>(@ViewBag.TraineeCount)</strong> students</h4>
+                    }
+                    <hr />
+                    <h5>Category: @Html.DisplayFor(model => model.Category.Name)</h5>
+                    <h5>Publish Day: @Html.DisplayFor(model => model.Create_Date)</h5>
+                    <h5>Publisher: @Html.DisplayFor(model => model.Publisher)</h5>
+                    @foreach (var item in ViewBag.OfficeTrainer)
+                    {
+                        <h5>Trainer: @item.Trainer.FullName</h5>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

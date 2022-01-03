@@ -1,0 +1,64 @@
+﻿@model Training_System.Models.OfficeAssign
+
+@{
+    ViewBag.Title = "Details Office Assign";
+}
+
+<div class="container">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Office Assign</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Trainer.FullName)*@
+                Trainer
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Trainer.FullName)
+            </dd>
+
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Course.Name)*@
+                Course
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Course.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Assign_Date)*@
+                Assign Date
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Assign_Date)
+            </dd>
+
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Update_Date)*@
+                Update Date
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Update_Date)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "EditOfficeAssign", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "manageOfficeAssign")
+    </p>
+</div>

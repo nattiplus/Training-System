@@ -1,0 +1,72 @@
+﻿@model Training_System.Models.Enrollment
+
+@{
+    ViewBag.Title = "Details Enrollment";
+}
+
+<div class="container">
+    <h2>Details</h2>
+
+    <div>
+        <h4>Enrollment</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Enroll_Date)*@
+                <label for="Enroll_Date">Enroll Date</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Enroll_Date)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Descriptions)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Descriptions)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status)
+            </dd>
+
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Update_Date)*@
+                <label for="Update_Date">Update Date</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Update_Date)
+            </dd>
+
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Course.Name)*@
+                <label for="CourseId">Course</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Course.Name)
+            </dd>
+
+            <dt>
+                @*@Html.DisplayNameFor(model => model.Trainee.FullName)*@
+                <label for="TraineeId">Trainee</label>
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Trainee.FullName)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "EditEnrollment", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "manageEnrollment")
+    </p>
+</div>

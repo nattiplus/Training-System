@@ -1,0 +1,118 @@
+﻿@using Microsoft.AspNet.Identity
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <!-- /.dropdown -->
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li>
+                        @* Using User.Isinrole("Role") To get the appropriate user profile *@
+                        @if (User.IsInRole("Trainee"))
+                        {
+                            <a href="/Trainee/TraineeProfile/@User.Identity.GetUserId()"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        }
+                        else if (User.IsInRole("Trainer"))
+                        {
+                            <a href="/Trainer/TrainerProfile/@User.Identity.GetUserId()"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        }
+                        else if (User.IsInRole("Staff Trainer"))
+                        {
+                            <a href="/StaffTrainer/StaffProfile/@User.Identity.GetUserId()"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        }
+                        else if (User.IsInRole("Admin"))
+                        {
+                            <a href="/Admin/adminProfile/@User.Identity.GetUserId()"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        }
+                    </li>
+                    <li>
+                        @if (User.IsInRole("Admin"))
+                        {
+                            <a href="/admin/Index/@User.Identity.GetUserId()"><i class="fa fa-gear fa-fw"></i> Management</a>
+                        }
+                        else if (User.IsInRole("Staff Trainer"))
+                        {
+                            <a href="/StaffTrainer/Index/@User.Identity.GetUserId()"><i class="fa fa-gear fa-fw"></i> Management</a>
+                        }
+                        else if (User.IsInRole("Trainer"))
+                        {
+                            <a href="/Trainer/myCourses/@User.Identity.GetUserId()"><i class="fa fa-bookmark fa-fw"></i> My Courses</a>
+                        }
+                        else if (User.IsInRole("Trainee"))
+                        {
+                            <a href="/Trainee/myCourses/@User.Identity.GetUserId()"><i class="fa fa-bookmark fa-fw"></i> My Courses</a>
+                        }
+
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out fa-fw"></i> Log off</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        @*<li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>*@
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@*@if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+            </li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+        </ul>
+        }
+    }
+    else
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+            <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+        </ul>
+    }*@

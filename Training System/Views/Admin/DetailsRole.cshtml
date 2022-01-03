@@ -1,0 +1,28 @@
+﻿@model Training_System.Models.RoleViewModel
+
+@{
+    ViewBag.Title = "Details Role";
+}
+
+<div class="container">
+    <h2>Details Role</h2>
+
+    <div>
+        <h4>RoleViewModel</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "EditRole", new { id = Model.Id }) |
+        @Html.ActionLink("Back to List", "manageRole")
+    </p>
+</div>

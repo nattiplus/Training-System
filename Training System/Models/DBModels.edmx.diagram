@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ed3efbee1aeb48789377bedda87748ff" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="TrainingSystem_Model.AspNetUser" Width="1.5" PointX="19" PointY="4.25" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.Admin" Width="1.5" PointX="22" PointY="3.75" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.AspNetRole" Width="1.5" PointX="15.875" PointY="5.375" />
+        <AssociationConnector Association="TrainingSystem_Model.AspNetUserRoles" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.Trainee" Width="1.5" PointX="25" PointY="3.875" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.Trainer" Width="1.5" PointX="25" PointY="9.5" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.AspNetUserClaim" Width="1.5" PointX="16" PointY="7.625" />
+        <AssociationConnector Association="TrainingSystem_Model.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.AspNetUserLogin" Width="1.5" PointX="16.25" PointY="3.25" />
+        <AssociationConnector Association="TrainingSystem_Model.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.TrainingStaff" Width="1.5" PointX="22.25" PointY="8.125" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.Category" Width="1.5" PointX="37.25" PointY="8.5" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.Course" Width="1.5" PointX="34.5" PointY="8.375" />
+        <AssociationConnector Association="TrainingSystem_Model.CategoryCourse" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.Enrollment" Width="1.5" PointX="29.375" PointY="6" />
+        <AssociationConnector Association="TrainingSystem_Model.CourseEnrollment" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.OfficeAssign" Width="1.5" PointX="29.75" PointY="10.25" />
+        <AssociationConnector Association="TrainingSystem_Model.CourseOfficeAssign" />
+        <EntityTypeShape EntityType="TrainingSystem_Model.Score" Width="1.5" PointX="32.25" PointY="5.375" />
+        <AssociationConnector Association="TrainingSystem_Model.CourseScore" />
+        <AssociationConnector Association="TrainingSystem_Model.AspNetUserTrainer" />
+        <AssociationConnector Association="TrainingSystem_Model.AspNetUserTrainingStaff" />
+        <AssociationConnector Association="TrainingSystem_Model.AspNetUserTrainee" />
+        <AssociationConnector Association="TrainingSystem_Model.AspNetUserAdmin" />
+        <AssociationConnector Association="TrainingSystem_Model.TraineeScore" />
+        <AssociationConnector Association="TrainingSystem_Model.TraineeEnrollment" />
+        <AssociationConnector Association="TrainingSystem_Model.TrainerOfficeAssign" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

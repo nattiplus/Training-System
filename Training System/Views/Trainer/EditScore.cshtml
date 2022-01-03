@@ -1,0 +1,77 @@
+﻿@model Training_System.Models.Score
+
+@{
+    ViewBag.Title = "Edit Score";
+}
+
+<div class="container">
+    <h2>Edit Score</h2>
+
+    @using (Html.BeginForm("EditScore", "Trainer", FormMethod.Post))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Score</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            <div class="form-group">
+                @*@Html.LabelFor(model => model.Mark_Date, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                <label for="Update_Date" class="control-label col-md-2">Update Date</label>
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Mark_Date, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="text" class="form-control" id="Mark_Date" name="Mark_Date" value="@DateTime.Now.ToString()" />
+                    @Html.ValidationMessageFor(model => model.Mark_Date, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ToTal, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.ToTal, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ToTal, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    <div class="checkbox">
+                        @Html.EditorFor(model => model.Status)
+                        @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CourseId, "CourseId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control" })*@
+                    @Html.EditorFor(model => model.CourseId, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.Course_Id } })
+                    @Html.ValidationMessageFor(model => model.CourseId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TraineeId, "TraineeId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @*@Html.DropDownList("TraineeId", null, htmlAttributes: new { @class = "form-control" })*@
+                    @Html.EditorFor(model => model.TraineeId, new { htmlAttributes = new { @class = "form-control", @Value = ViewBag.Trainee_Id } })
+                    @Html.ValidationMessageFor(model => model.TraineeId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        @*@Html.ActionLink("Back to List", "Index")*@
+        <a href="/Trainer/MarkStudents/@ViewBag.Course_Id">Back to List</a>
+    </div>
+</div>

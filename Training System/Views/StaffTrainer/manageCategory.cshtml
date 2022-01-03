@@ -1,0 +1,503 @@
+﻿@using Microsoft.AspNet.Identity
+@model Training_System.Models.Category
+
+@{
+    ViewBag.Title = "Staff - Training System";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Staff - Manage Account</title>
+
+    <!-- Core CSS - Include with every page -->
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <!-- Page-Level Plugin CSS - Dashboard -->
+    <link href="~/Content/css/plugins/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <link href="~/Content/css/plugins/timeline/timeline.css" rel="stylesheet" />
+
+    <!-- Page-Level Plugin CSS - Tables -->
+    <link href="~/Content/css/plugins/dataTables/dataTables.bootstrap.css" rel="stylesheet" />
+
+    <!-- SB Admin CSS - Include with every page -->
+    <link href="~/Content/css/sb-admin.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/css/Style.css" />
+
+    <link href="~/Content/themes/base/jquery-ui.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <div id="wrapper">
+
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/StaffTrainer">Staff Trainer</a>
+            </div>
+            <!-- /.navbar-header -->
+            @if (Request.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-envelope fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <strong>John Smith</strong>
+                                            <span class="pull-right text-muted">
+                                                <em>Yesterday</em>
+                                            </span>
+                                        </div>
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <strong>John Smith</strong>
+                                            <span class="pull-right text-muted">
+                                                <em>Yesterday</em>
+                                            </span>
+                                        </div>
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <strong>John Smith</strong>
+                                            <span class="pull-right text-muted">
+                                                <em>Yesterday</em>
+                                            </span>
+                                        </div>
+                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="text-center" href="#">
+                                        <strong>Read All Messages</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- /.dropdown-messages -->
+                        </li>
+                        <!-- /.dropdown -->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-tasks fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-tasks">
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <p>
+                                                <strong>Task 1</strong>
+                                                <span class="pull-right text-muted">40% Complete</span>
+                                            </p>
+                                            <div class="progress progress-striped active">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" style="width: 40%">
+                                                    <span class="sr-only">40% Complete (success)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <p>
+                                                <strong>Task 2</strong>
+                                                <span class="pull-right text-muted">20% Complete</span>
+                                            </p>
+                                            <div class="progress progress-striped active">
+                                                <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%">
+                                                    <span class="sr-only">20% Complete</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <p>
+                                                <strong>Task 3</strong>
+                                                <span class="pull-right text-muted">60% Complete</span>
+                                            </p>
+                                            <div class="progress progress-striped active">
+                                                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%">
+                                                    <span class="sr-only">60% Complete (warning)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <p>
+                                                <strong>Task 4</strong>
+                                                <span class="pull-right text-muted">80% Complete</span>
+                                            </p>
+                                            <div class="progress progress-striped active">
+                                                <div class="progress-bar progress-bar-danger" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%">
+                                                    <span class="sr-only">80% Complete (danger)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="text-center" href="#">
+                                        <strong>See All Tasks</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- /.dropdown-tasks -->
+                        </li>
+                        <!-- /.dropdown -->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-comment fa-fw"></i> New Comment
+                                            <span class="pull-right text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                            <span class="pull-right text-muted small">12 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-envelope fa-fw"></i> Message Sent
+                                            <span class="pull-right text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-tasks fa-fw"></i> New Task
+                                            <span class="pull-right text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="#">
+                                        <div>
+                                            <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                            <span class="pull-right text-muted small">4 minutes ago</span>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a class="text-center" href="#">
+                                        <strong>See All Alerts</strong>
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- /.dropdown-alerts -->
+                        </li>
+                        <!-- /.dropdown -->
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li>
+                                    <a href="/StaffTrainer/StaffProfile/@User.Identity.GetUserId()"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                                </li>
+                                <li>
+                                    <a href="/StaffTrainer/Index/@User.Identity.GetUserId()"><i class="fa fa-gear fa-fw"></i> Management</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="javascript:document.getElementById('logoutForm').submit()"><i class="fa fa-sign-out fa-fw"></i> Log off</a>
+                                </li>
+                            </ul>
+                            <!-- /.dropdown-user -->
+                        </li>
+                        <!-- /.dropdown -->
+                    </ul>
+                }
+            }
+            else
+            {
+                <ul class="nav navbar-top-links navbar-right">
+                    <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+                    <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+                </ul>
+            }
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default navbar-static-side" role="navigation">
+                <div class="sidebar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
+                            <div class="input-group custom-search-form">
+                                <input type="text" class="form-control" placeholder="Search...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" type="button">
+                                        <i class="fa fa-search"></i>
+                                    </button>
+                                </span>
+                            </div>
+                            <!-- /input-group -->
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-wrench fa-fw"></i> Management<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="/StaffTrainer"><i class="fa fa-table fa-fw"></i>Account</a>
+                                </li>
+                                <li>
+                                    <a href="/StaffTrainer/manageTrainer"><i class="fa fa-table fa-fw"></i>Trainer Profile</a>
+                                </li>
+                                <li>
+                                    <a href="/StaffTrainer/manageTrainee"><i class="fa fa-table fa-fw"></i>Trainee Profile</a>
+                                </li>
+                                <li>
+                                    <a href="/StaffTrainer/manageCategory"><i class="fa fa-table fa-fw"></i>Category</a>
+                                </li>
+                                <li>
+                                    <a href="/StaffTrainer/manageCourse"><i class="fa fa-table fa-fw"></i>Course</a>
+                                </li>
+                                <li>
+                                    <a href="/StaffTrainer/manageEnrollment"><i class="fa fa-table fa-fw"></i>Enrollment</a>
+                                </li>
+                                <li>
+                                    <a href="/StaffTrainer/manageOfficeAssign"><i class="fa fa-table fa-fw"></i>Office Assign</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                    <!-- /#side-menu -->
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">Category</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <a href="/StaffTrainer/CreateCategory" class="btn btn-success" style="margin-bottom:10px;" @*onclick="PopupForm('@Url.Action("AddOrEdit","StaffTrainer")')"*@><i class="fa fa-plus"></i> Add New</a>
+                    <!-- Data Table For Category -->
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            DataTables Advanced Tables
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover" id="dataTables-trainingsystem">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Name</th>
+                                            <th>Image</th>
+                                            <th>CreateDate</th>
+                                            <th>UpdateDate</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if (ViewBag.Categories != null)
+                                        {
+                                            foreach (var item in ViewBag.Categories)
+                                            {
+                                                <tr id="row_@item.Id">
+                                                    <td>@item.Id</td>
+                                                    <td>@item.Name</td>
+                                                    <td><img src="@Url.Content(item.Image)" width="400" height="300" /></td>
+                                                    <td>@item.Create_Date</td>
+                                                    <td>@item.Update_Date</td>
+                                                    <td>
+                                                        <a href="/StaffTrainer/EditCategory/@item.Id" class="btn btn-primary" @*onclick="EditCategory(@item.Id)"*@><i class="glyphicon glyphicon-pencil"></i></a>
+                                                        <a href="/StaffTrainer/DetailsCategory/@item.Id" class="btn btn-warning"><i class="glyphicon glyphicon-eye-open"></i></a>
+                                                        <a href="/StaffTrainer/DeleteCategory/@item.Id" class="btn btn-danger" @*onclick="ConfirmDeleteCategory(@item.Id)"*@><i class="glyphicon glyphicon-trash"></i></a>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <!-- /#wrapper -->
+    <!-- Core Scripts - Include with every page -->
+    <script src="~/Content/js/jquery-1.10.2.js"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/plugins/metisMenu/jquery.metisMenu.js"></script>
+
+    <!-- Page-Level Plugin Scripts - Tables -->
+    <script src="~/Content/js/plugins/dataTables/jquery.dataTables.js"></script>
+    <script src="~/Content/js/plugins/dataTables/dataTables.bootstrap.js"></script>
+
+
+    <script src="~/Scripts/jquery-ui-1.13.0.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <!-- SB Admin Scripts - Include with every page -->
+    <script src="~/Content/js/sb-admin.js"></script>
+    <script>
+
+        $(document).ready(function () {
+            $('#dataTables-trainingsystem').dataTable();
+        });
+    </script>
+
+    @*<script type="text/javascript">
+            var Popup, datatable;
+
+            $(document).ready(function () {
+                datatable = $('#dataTables-trainingsystem').dataTable({
+                    "ajax": {
+
+                        "type": "GET",
+                        "url": "@Url.Action("GetData","StaffTrainer")",
+                        "datatype": "JSON",
+
+                    },
+                    "columns": [
+                        { "data": "Id" },
+                        { "data": "Name" },
+                        { "data": "Image" },
+                        { "data": "Create_Date" },
+                        { "data": "Update_Date" },
+                        {
+                            "data": "Id", "render": function (data) {
+                                return "<a class='btn btn-info btn-sm' onclick=PopupForm('@Url.Action("AddOrEdit","StaffTrainer")/" + data + "')><i class='fa fa-pencil'></i> Edit</a><a class='btn btn-danger btn-sm' style='margin-left:5px' onclick=DeleteCategory("+data+")><i class='fa fa-trash'></i> Delete</a>";
+                        },
+                            "orderable": false,
+                            "width":"150px"
+
+                        }
+                    ],
+                    "language": {
+                        "emptyTable": "No data found, Click <b>Add New</b> Button"
+                    }
+                });
+            })
+
+            function PopupForm(url) {
+                var formDiv = $('<div/>');
+                $.get(url)
+                    .done(function (response) {
+                        formDiv.html(response);
+
+                        Popup = formDiv.dialog({
+                            autoOpen: true,
+                            resizable: false,
+                            title: 'Category Information',
+                            height: 500,
+                            width: 700,
+                            close: function () {
+                                Popup.dialog('destroy').remove();
+                            }
+                        });
+                    });
+            }
+
+            function SubmitForm(form) {
+                    $.ajax({
+                        type: "POST",
+                        url: form.action,
+                        data: $(form).serialize(),
+                        success: function (data) {
+                            if (data.success) {
+                                Popup.dialog('close');
+                                datatable.api().ajax.reload();
+                            }
+                        }
+                    });
+                return false;
+            }
+
+            function DeleteCategory(id) {
+                if (confirm('Are you sure to delete this Category Record?')) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("DeleteCategory","StaffTrainer")/' + id,
+                        success: function (data) {
+                            if (data.success) {
+                                datatable.api().ajax.reload();
+                                $.notify(data.message, {
+                                    globalPosition: "top center",
+                                    className: "success"
+                                })
+                            }
+                        }
+                    });
+                }
+            }
+        </script>*@
+</body>
+</html>

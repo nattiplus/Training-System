@@ -1,0 +1,53 @@
+﻿@model IEnumerable<Training_System.Models.Score>
+
+@{
+    ViewBag.Title = "ScoreResult";
+}
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="page-header"><h2>Score Students - @item.Course.Name</h2></div>
+        }
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>Mark Date</th>
+                        <th>Course</th>
+                        <th>Student ID</th>
+                        <th>Student Name</th>
+                        <th>Score</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        @foreach (var item in Model)
+                        {
+                            <td>@Html.DisplayFor(modelItem => item.Mark_Date)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Course.Name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Trainee.Id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Trainee.FullName)</td>
+                            <td>@Html.DisplayFor(modelItem => item.ToTal)</td>
+                            <td>
+                                @if (item.Status == true)
+                                {
+                                    <button class="btn btn-success">Passed</button>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-danger">Failed</button>
+                                }
+                            </td>
+                            <td>
+                                <a href="#" class="btn btn-primary">Give Feedback</a>
+                            </td>
+                        }
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+</div>
+
